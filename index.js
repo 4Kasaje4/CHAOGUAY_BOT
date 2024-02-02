@@ -143,7 +143,7 @@ bot.on('messageCreate',async message => {
     🌟 ห้องโปรโมชั่น
     <#1155568912281391124>
     `);
-    Close.setTimestamp();
+    TagPromotion.setTimestamp();
 
     const Send_slip = new EmbedBuilder();
     Send_slip.setColor(0xfa1919);
@@ -163,6 +163,18 @@ bot.on('messageCreate',async message => {
     <#1190981809442402354>
     `);
     slip.setTimestamp();
+
+    const close_ticket = new EmbedBuilder();
+    close_ticket.setColor(0xfa1919);
+    close_ticket.setDescription(`
+    📢ㅤขออนุญาตปิด ticket นะคะ รบกวนเซฟไฟล์รูปไว้ด้วยน้า
+    🎀ㅤหากใครไฟล์หายหรือยังไม่ได้เซฟ กด ticket มาขอใหม่ได้เลยค่ะ \n
+    แจ้งเลขเดิมด้วยนะคะ
+    ดูเลขได้ที่ห้องนี้เลย <#1185237275697750056>
+    `);
+    close_ticket.setTimestamp();
+
+
 
     if(message.content == "-tx"){
         message.channel.send({embeds:[thx]});
@@ -192,7 +204,12 @@ bot.on('messageCreate',async message => {
         message.channel.send({embeds:[slip]});
         await message.delete();
     }
-})
+    else if(message.content == "-ct"){
+        message.channel.send({embeds:[close_ticket]});
+        await message.delete();
+    }
+
+});
 
 
 bot.login(process.env.TOKEN);
